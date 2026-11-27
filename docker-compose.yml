@@ -1,0 +1,14 @@
+# Сервер AbitSearch у контейнері. База SQLite зберігається в іменованому томі.
+services:
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    environment:
+      JWT_SECRET: change-me-in-production
+    ports:
+      - "8080:8080"
+    volumes:
+      - abitsearch-data:/data
+volumes:
+  abitsearch-data:
